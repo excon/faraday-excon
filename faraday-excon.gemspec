@@ -5,8 +5,8 @@ require_relative 'lib/faraday/excon/version'
 Gem::Specification.new do |spec|
   spec.name = 'faraday-excon'
   spec.version = Faraday::Excon::VERSION
-  spec.authors = ['Your Name']
-  spec.email = ['your_name@gmail.com']
+  spec.authors = ['Mattia Giuffrida']
+  spec.email = ['giuffrida.mattia@gmail.com']
 
   spec.summary = 'Faraday adapter for Excon'
   spec.description = 'Faraday adapter for Excon'

@@ -2,7 +2,7 @@
 
 This gem is a [Faraday][faraday] adapter for the [Excon][excon] library.
 Faraday is an HTTP client library that provides a common interface over many adapters.
-Every adapter is defined into it's own gem. This gem defines the adapter for [Excon][excon].
+Every adapter is defined into its own gem. This gem defines the adapter for Excon.
 
 ## Installation
 
