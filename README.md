@@ -6,7 +6,7 @@ Every adapter is defined into its own gem. This gem defines the adapter for Exco
 
 ## Installation
 
-Add this lines to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
 gem 'excon', '>= 0.27.4'
