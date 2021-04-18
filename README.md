@@ -6,9 +6,10 @@ Every adapter is defined into its own gem. This gem defines the adapter for Exco
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this lines to your application's Gemfile:
 
 ```ruby
+gem 'excon', '>= 0.27.4'
 gem 'faraday-excon'
 ```
 
@@ -16,8 +17,9 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
+Or install them yourself as:
 
+    $ gem install excon -v '>= 0.27.4'
     $ gem install faraday-excon
 
 ## Usage

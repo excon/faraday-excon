@@ -5,7 +5,7 @@ require_relative 'lib/faraday/excon/version'
 Gem::Specification.new do |spec|
   spec.name = 'faraday-excon'
   spec.version = Faraday::Excon::VERSION
-  spec.authors = ['Mattia Giuffrida']
+  spec.authors = ['@iMacTia']
   spec.email = ['giuffrida.mattia@gmail.com']
 
   spec.summary = 'Faraday adapter for Excon'
@@ -22,7 +22,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob('lib/**/*') + %w[README.md LICENSE.md]
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'excon', '>= 0.27.4'
+  # TODO: make this a normal dependency when releasing v2.0
+  spec.add_development_dependency 'excon', '>= 0.27.4'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'faraday', '~> 1.0'
