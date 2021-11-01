@@ -4,8 +4,6 @@ module Faraday
   class Adapter
     # Excon adapter.
     class Excon < Faraday::Adapter
-      dependency 'excon'
-
       def build_connection(env)
         opts = opts_from_env(env)
         ::Excon.new(env[:url].to_s, opts.merge(@connection_options))

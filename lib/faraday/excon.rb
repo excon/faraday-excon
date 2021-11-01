@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'excon'
+require 'faraday'
 require_relative 'adapter/excon'
 require_relative 'excon/version'
 
