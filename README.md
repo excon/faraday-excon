@@ -22,15 +22,12 @@ Or install them yourself as:
 
 ## Usage
 
-Configure your Faraday connection to use this adapter like this:
-
 ```ruby
-connection = Faraday.new(url, conn_options) do |conn|
-  conn.adapter(:excon)
+conn = Faraday.new(...) do |f|
+  # no custom options available
+  f.adapter :excon
 end
 ```
-
-For more information on how to setup your Faraday connection and adapters usage, please refer to the [Faraday Website][faraday-website].
 
 ## Development
 
