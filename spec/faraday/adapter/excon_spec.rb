@@ -15,6 +15,24 @@ RSpec.describe Faraday::Adapter::Excon do
     expect(conn.data[:debug_request]).to be_truthy
   end
 
+  context 'build_connection' do
+    let(:adapter) { Faraday::Adapter::Excon.new }
+    let(:request) { Faraday::RequestOptions.new }
+    let(:uri) { URI.parse('https://example.com') }
+    let(:env) { { request: request, url: uri } }
+
+    it 'uses a new connection when the adapter is not persistent' do
+      conn1 = adapter.connection(env).object_id
+      expect(adapter.connection(env).object_id).to_not eq(conn1)
+    end
+
+    it 're-uses the same connection when the adapter is persistent' do
+      adapter = Faraday::Adapter::Excon.new(nil, persistent: true)
+      conn1 = adapter.connection(env).object_id
+      expect(adapter.connection(env).object_id).to eq(conn1)
+    end
+  end
+
   context 'config' do
     let(:adapter) { Faraday::Adapter::Excon.new }
     let(:request) { Faraday::RequestOptions.new }

@@ -5,14 +5,26 @@ module Faraday
     # Excon adapter.
     class Excon < Faraday::Adapter
       def build_connection(env)
+        if @connection_options[:persistent]
+          return @connection if defined? @connection
+        end
         opts = opts_from_env(env)
-        ::Excon.new(env[:url].to_s, opts.merge(@connection_options))
+
+        # remove path & query when creating connection
+        # because if it is persistent, it can re-use the conn
+        url = env[:url].dup
+        url.path = ''
+        url.query = nil
+
+        @connection = ::Excon.new(url.to_s, opts.merge(@connection_options))
       end
 
       def call(env)
         super
 
         req_opts = {
+          path: env[:url].path,
+          query: env[:url].query,
           method: env[:method].to_s.upcase,
           headers: env[:request_headers],
           body: read_body(env)
@@ -26,11 +38,22 @@ module Faraday
           end
         end
 
-        resp = connection(env) { |http| http.request(req_opts) }
+        resp = connect_and_request(env, req_opts)
         save_response(env, resp.status.to_i, resp.body, resp.headers,
                       resp.reason_phrase)
 
         @app.call(env)
+      end
+
+      # TODO: support streaming requests
+      def read_body(env)
+        env[:body].respond_to?(:read) ? env[:body].read : env[:body]
+      end
+
+      private
+
+      def connect_and_request(env, req_opts)
+        connection(env) { |http| http.request(req_opts) }
       rescue ::Excon::Errors::SocketError => e
         raise Faraday::TimeoutError, e if e.message.match?(/\btimeout\b/)
 
@@ -40,13 +63,6 @@ module Faraday
       rescue ::Excon::Errors::Timeout => e
         raise Faraday::TimeoutError, e
       end
-
-      # TODO: support streaming requests
-      def read_body(env)
-        env[:body].respond_to?(:read) ? env[:body].read : env[:body]
-      end
-
-      private
 
       def opts_from_env(env)
         opts = {}
