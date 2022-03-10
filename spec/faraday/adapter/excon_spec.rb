@@ -22,14 +22,14 @@ RSpec.describe Faraday::Adapter::Excon do
     let(:env) { { request: request, url: uri } }
 
     it 'uses a new connection when the adapter is not persistent' do
-      conn1 = adapter.connection(env).object_id
-      expect(adapter.connection(env).object_id).to_not eq(conn1)
+      conn1 = adapter.connection(env)
+      expect(adapter.connection(env)).to_not be(conn1)
     end
 
     it 're-uses the same connection when the adapter is persistent' do
       adapter = Faraday::Adapter::Excon.new(nil, persistent: true)
-      conn1 = adapter.connection(env).object_id
-      expect(adapter.connection(env).object_id).to eq(conn1)
+      conn1 = adapter.connection(env)
+      expect(adapter.connection(env)).to be(conn1)
     end
   end
 
