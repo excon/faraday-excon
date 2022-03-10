@@ -29,6 +29,14 @@ conn = Faraday.new(...) do |f|
 end
 ```
 
+Passing connection options:
+```ruby
+conn = Faraday.new(...) do |f|
+  # Will keep the connection memoized within the adapter, and rely that flag to excon
+  f.adapter :excon, persistent: true
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
