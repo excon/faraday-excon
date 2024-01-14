@@ -16,12 +16,13 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['source_code_uri'] = 'https://github.com/lostisland/faraday-excon'
   spec.metadata['changelog_uri'] = "https://github.com/lostisland/faraday-excon/releases/tag/v#{spec.version}"
 
   spec.files = Dir.glob('lib/**/*') + %w[README.md LICENSE.md]
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'excon', '>= 0.27.4'
+  spec.add_dependency 'excon', '>= 0.109.0'
   spec.add_dependency 'faraday', '~> 2.0'
 end

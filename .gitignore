@@ -10,7 +10,7 @@ spec/reports/
 tmp/
 
 *.gem
-gemfile.lock
+Gemfile.lock
 
 .rvmrc
 .ruby-version

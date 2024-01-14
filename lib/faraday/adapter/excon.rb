@@ -5,9 +5,10 @@ module Faraday
     # Excon adapter.
     class Excon < Faraday::Adapter
       def build_connection(env)
-        if @connection_options[:persistent]
-          return @connection if defined? @connection
+        if @connection_options[:persistent] && defined?(@connection)
+          return @connection
         end
+
         opts = opts_from_env(env)
 
         # remove path & query when creating connection
