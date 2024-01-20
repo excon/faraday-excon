@@ -55,10 +55,10 @@ The gem is available as open source under the terms of the [license][license].
 
 Everyone interacting in the Faraday Excon adapter project's codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct][code-of-conduct].
 
-[faraday]: https://github.com/lostisland/faraday
+[faraday]: https://github.com/excon/faraday
 [faraday-website]: https://lostisland.github.io/faraday
 [excon]: https://github.com/excon/excon
 [rubygems]: https://rubygems.org
-[repo]: https://github.com/lostisland/faraday-excon
-[license]: https://github.com/lostisland/faraday-excon/blob/main/LICENSE.md
-[code-of-conduct]: https://github.com/lostisland/faraday-excon/blob/main/CODE_OF_CONDUCT.md
+[repo]: https://github.com/excon/faraday-excon
+[license]: https://github.com/excon/faraday-excon/blob/main/LICENSE.md
+[code-of-conduct]: https://github.com/excon/faraday-excon/blob/main/CODE_OF_CONDUCT.md
