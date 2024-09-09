@@ -82,6 +82,7 @@ module Faraday
       end
 
       OPTS_KEYS = [
+        %i[ciphers ciphers],
         %i[client_cert client_cert],
         %i[client_key client_key],
         %i[certificate certificate],

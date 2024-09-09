@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'excon', '>= 0.109.0'
-  spec.add_dependency 'faraday', '~> 2.0'
+  spec.add_dependency 'faraday', '>= 2.11.0', '< 3'
 end
