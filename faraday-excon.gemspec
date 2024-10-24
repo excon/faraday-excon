@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob('lib/**/*') + %w[README.md LICENSE.md]
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'excon', '>= 0.109.0'
+  spec.add_dependency 'excon', '>= 1.0.0'
   spec.add_dependency 'faraday', '>= 2.11.0', '< 3'
 end
