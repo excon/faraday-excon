@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['source_code_uri'] = 'https://github.com/excon/faraday-excon'
   spec.metadata['changelog_uri'] = "https://github.com/excon/faraday-excon/releases/tag/v#{spec.version}"
-  spec.metadata["funding_uri"] = "https://github.com/sponsors/geemus"
+  spec.metadata['funding_uri'] = 'https://github.com/sponsors/geemus'
 
   spec.files = Dir.glob('lib/**/*') + %w[README.md LICENSE.md]
   spec.require_paths = ['lib']
