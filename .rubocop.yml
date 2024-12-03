@@ -3,8 +3,11 @@ inherit_from: .rubocop_todo.yml
 require:
   - rubocop-packaging
   - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
+  NewCops: enable
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 3.0
