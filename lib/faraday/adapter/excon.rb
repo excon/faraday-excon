@@ -4,6 +4,19 @@ module Faraday
   class Adapter
     # Excon adapter.
     class Excon < Faraday::Adapter
+      OPTS_KEYS = [
+        %i[ciphers ciphers],
+        %i[client_cert client_cert],
+        %i[client_key client_key],
+        %i[certificate certificate],
+        %i[private_key private_key],
+        %i[ssl_ca_path ca_path],
+        %i[ssl_ca_file ca_file],
+        %i[ssl_version version],
+        %i[ssl_min_version min_version],
+        %i[ssl_max_version max_version]
+      ].freeze
+
       def build_connection(env)
         if @connection_options[:persistent] && defined?(@connection)
           return @connection
@@ -80,19 +93,6 @@ module Faraday
       def needs_ssl_settings?(env)
         env[:url].scheme == 'https' && env[:ssl]
       end
-
-      OPTS_KEYS = [
-        %i[ciphers ciphers],
-        %i[client_cert client_cert],
-        %i[client_key client_key],
-        %i[certificate certificate],
-        %i[private_key private_key],
-        %i[ssl_ca_path ca_path],
-        %i[ssl_ca_file ca_file],
-        %i[ssl_version version],
-        %i[ssl_min_version min_version],
-        %i[ssl_max_version max_version]
-      ].freeze
 
       def amend_opts_with_ssl!(opts, ssl)
         opts[:ssl_verify_peer] = !!ssl.fetch(:verify, true)
