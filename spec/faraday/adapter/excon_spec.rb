@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe Faraday::Adapter::Excon do
-  features :request_body_on_query_methods, :reason_phrase_parse, :trace_method
+  features :compression,
+           :reason_phrase_parse,
+           :request_body_on_query_methods,
+           :trace_method
 
   it_behaves_like 'an adapter'
 
