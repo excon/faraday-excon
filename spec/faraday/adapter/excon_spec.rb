@@ -4,6 +4,7 @@ RSpec.describe Faraday::Adapter::Excon do
   features :compression,
            :reason_phrase_parse,
            :request_body_on_query_methods,
+           :streaming,
            :trace_method
 
   it_behaves_like 'an adapter'

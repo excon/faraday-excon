@@ -45,14 +45,20 @@ module Faraday
         }
 
         req = env[:request]
-        if req&.stream_response?
+        yielded = false
+        if env.stream_response?
           total = 0
           req_opts[:response_block] = lambda do |chunk, _remain, _total|
-            req.on_data.call(chunk, total += chunk.size)
+            yielded = true
+            req.on_data.call(chunk, total += chunk.bytesize, env)
           end
         end
 
         resp = connect_and_request(env, req_opts)
+
+        # duplicate env.stream_response helper behavior for empty streams
+        req.on_data.call(+'', 0, env) if req&.stream_response? && !yielded
+
         save_response(env, resp.status.to_i, resp.body, resp.headers,
                       resp.reason_phrase)
 
